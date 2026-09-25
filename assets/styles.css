@@ -220,9 +220,10 @@ footer a:hover{color:var(--hero-ink)}
 .skip{position:absolute;left:-9999px;top:0;background:var(--bg-2);color:var(--ink);padding:10px 14px;z-index:100}
 .skip:focus{left:16px;top:16px}
 .notfound{padding-block:120px;text-align:center}
-.nform iframe{width:100%;height:760px;border:0;border-radius:6px;background:#fff}
-.nform .note{margin-top:10px}
-.nform .note a{color:inherit;text-decoration:underline}
+.nform-list{margin:0 0 18px;padding-left:20px;color:var(--ink-2);font-size:15px;display:grid;gap:6px}
+.nform-btn{width:100%;justify-content:center;font-size:14px;padding:16px 20px}
+.nform .note{margin-top:14px}
+.nform .note a{color:inherit;text-decoration:underline;text-underline-offset:3px}
 /* Problem / Lösung */
 .pas{background:var(--bg-2)}
 .pas .wrap{display:grid;grid-template-columns:1fr 1fr;gap:40px}
