@@ -8,7 +8,7 @@
 <link rel="canonical" href="https://safecarlogistics.de/impressum.html">
 <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1">
 <meta name="theme-color" content="#0B1F3A">
-<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.make.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.bunny.net; font-src https://fonts.bunny.net; img-src 'self' data:; connect-src 'self' https://*.make.com; base-uri 'self'; form-action 'self'; upgrade-insecure-requests">
 <meta name="referrer" content="strict-origin-when-cross-origin">
 <meta name="keywords" content="Fahrzeugtransport, geschlossener Autotransport, Sportwagen Transport, Oldtimer Transport, Fahrzeugüberführung, Autotransport Autohaus, exklusive Fahrzeuge transportieren, Neuwagen Überführung, Vechta, Niedersachsen, Deutschland, Europa">
 <meta name="author" content="SafeCar Logistics – AWAR Handelsgesellschaft mbH">
@@ -38,9 +38,8 @@
 <link rel="manifest" href="/manifest.webmanifest">
 <link rel="icon" href="/assets/favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&display=swap">
+<link rel="preconnect" href="https://fonts.bunny.net" crossorigin>
+<link rel="stylesheet" href="https://fonts.bunny.net/css?family=manrope:300,400,500,600,700,800&display=swap">
 <style>
 :root{
   --bg:#F5F6F8; --bg-2:#FFFFFF; --bg-3:#E9ECF1; --ink:#0B1F3A; --ink-2:#3A4B66; --ink-3:#6B7A90;
@@ -260,6 +259,8 @@ footer a:hover{color:var(--hero-ink)}
 .legal-page h1{font-size:clamp(28px,3.4vw,40px);margin-bottom:24px}
 .legal-page h2{font-size:20px;margin:32px 0 10px}
 .legal-page p,.legal-page li{color:var(--ink-2)}
+.legal-page p{margin:0 0 14px}
+.legal-page li{margin-bottom:6px}
 .legal-page ul{padding-left:20px}
 .skip{position:absolute;left:-9999px;top:0;background:var(--bg-2);color:var(--ink);padding:10px 14px;z-index:100}
 .skip:focus{left:16px;top:16px}
@@ -356,8 +357,6 @@ footer{padding-block:48px 28px}
 <p>Eintragung im Handelsregister<br>Registergericht: Amtsgericht Oldenburg<br>Registernummer: HRB 214811</p>
 <h2>Umsatzsteuer</h2>
 <p>Umsatzsteuer-Identifikationsnummer gemäß § 27a UStG: DE327261010<br>Steuernummer: 68/218/04862</p>
-<h2>Erlaubnis</h2>
-<p>Erlaubnis für den gewerblichen Güterkraftverkehr nach § 3 GüKG: [Nummer und erteilende Behörde nachtragen]</p>
 <h2>Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV</h2>
 <p>Anton Wagner, Anschrift wie oben</p>
 <h2>Streitschlichtung</h2>
@@ -399,7 +398,7 @@ const CONFIG = {
   city:       "Deutschland – wir holen bundesweit ab",
   legalName:  "AWAR Handelsgesellschaft mbH<br>Alter Flugplatz 6<br>49377 Vechta",
   // Webhook-URL aus Make.com / Zapier (Anleitung in README-DEPLOY.md). Leer lassen = E-Mail-Fallback.
-  webhookUrl: "",
+  webhookUrl: "https://hook.eu1.make.com/kglhy8p5nsyimq2jk4uvyl6vvsgmsnm6",
   demo: false,
   // Social-Media-Profile (leer lassen = Icon wird nicht angezeigt)
   social: { instagram: "https://www.instagram.com/safecarlogistics.de/", linkedin: "", facebook: "", youtube: "" },
