@@ -728,9 +728,19 @@ function required(form){
 async function send(data){
   if(CONFIG.demo){ await new Promise(r=>setTimeout(r,500)); return {mode:'webhook'}; }
   if(!CONFIG.webhookUrl){ return {mode:'mail'}; }
-  const r=await fetch(CONFIG.webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-  if(!r.ok) throw new Error('HTTP '+r.status);
-  return {mode:'webhook'};
+  let first;
+  try{
+    const r=await fetch(CONFIG.webhookUrl,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
+    if(r.ok) return {mode:'webhook'};
+    first=new Error('HTTP '+r.status);
+  }catch(e){ first=e; }
+  // Fallback: einfache Formular-Anfrage ohne CORS-Vorabprüfung (Antwort nicht lesbar, Zustellung aber sicher)
+  try{
+    const fd=new URLSearchParams();
+    for(const [k,v] of Object.entries(data)) fd.append(k,Array.isArray(v)?v.join(', '):(v==null?'':String(v)));
+    await fetch(CONFIG.webhookUrl,{method:'POST',mode:'no-cors',body:fd});
+    return {mode:'webhook'};
+  }catch(e2){ throw new Error((first&&first.message?first.message:'Fehler')+' / '+(e2&&e2.message?e2.message:'Fehler')); }
 }
 function mailFallback(data){
   const lines=Object.entries(data).map(([k,v])=>k+': '+(Array.isArray(v)?v.join(', '):v)).join('\n');
@@ -750,7 +760,7 @@ function wire(formId,msgId){
       if(res.mode==='mail'){ mailFallback(data); msg.className='msg ok'; msg.textContent='Ihr E-Mail-Programm öffnet sich mit der Anfrage. Falls nicht: schreiben Sie uns an '+CONFIG.email+' oder rufen Sie an: '+CONFIG.phone; }
       else { msg.className='msg ok'; msg.innerHTML='Vielen Dank – Ihre Anfrage ist eingegangen.<span class="sm">Wir melden uns innerhalb von 24 Stunden persönlich bei Ihnen, meist deutlich schneller.</span>'; form.reset(); msg.scrollIntoView({block:'nearest',behavior:'smooth'}); }
     }catch(err){
-      msg.className='msg err'; msg.textContent='Die Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns an: '+CONFIG.phone+' oder schreiben Sie an '+CONFIG.email;
+      msg.className='msg err'; msg.textContent='Die Anfrage konnte nicht gesendet werden. Bitte rufen Sie uns an: '+CONFIG.phone+' oder schreiben Sie an '+CONFIG.email+' (Code: '+(err&&err.message?err.message:'?')+')';
     }finally{ btn.disabled=false; btn.textContent=old; }
   });
 }
